@@ -15,7 +15,7 @@
         <entry file="file://$PROJECT_DIR$/wp-content/plugins/dc-booking/dcb.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
-              <caret line="582" column="0" lean-forward="true" selection-start-line="582" selection-start-column="0" selection-end-line="582" selection-end-column="0" />
+              <caret line="582" column="0" lean-forward="false" selection-start-line="582" selection-start-column="0" selection-end-line="582" selection-end-column="0" />
               <folding>
                 <marker date="1514552030059" expanded="true" signature="2760:2813" ph="SELECT * FRO... ${$table}" />
                 <marker date="1514552030059" expanded="true" signature="10678:10725" ph="SELECT * FRO... ${$table}" />
@@ -286,12 +286,12 @@
       <workItem from="1513341685462" duration="8210000" />
       <workItem from="1513598218245" duration="11656000" />
       <workItem from="1514463183426" duration="22290000" />
-      <workItem from="1514979251107" duration="788000" />
+      <workItem from="1514979251107" duration="1125000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135870000" />
+    <option name="totallyTimeSpent" value="136207000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="1" width="1378" height="733" extended-state="6" />
@@ -1040,7 +1040,7 @@
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/dc-booking/dcb.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="582" column="0" lean-forward="true" selection-start-line="582" selection-start-column="0" selection-end-line="582" selection-end-column="0" />
+          <caret line="582" column="0" lean-forward="false" selection-start-line="582" selection-start-column="0" selection-end-line="582" selection-end-column="0" />
           <folding>
             <marker date="1514552030059" expanded="true" signature="2760:2813" ph="SELECT * FRO... ${$table}" />
             <marker date="1514552030059" expanded="true" signature="10678:10725" ph="SELECT * FRO... ${$table}" />
