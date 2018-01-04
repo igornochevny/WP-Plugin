@@ -50,11 +50,11 @@ function load_plugin_resources()
 
 function dcb_settings_page()
 {
-    $host = 'localhost'; // адрес сервера
+    $host = 'grassbusinesslabs.tk'; // адрес сервера
     $database = 'dc-plugin-server'; // имя базы данных
     $table = 'users';
     $user = 'root'; // имя пользователя
-    $password = ''; // пароль
+    $password = 'Grass951235789'; // пароль
     ?>
 
     <div class="wrap booking-plugin">
@@ -70,7 +70,7 @@ function dcb_settings_page()
 
             $secret_key = htmlspecialchars($_POST['secret_key']);
 
-            $link = mysqli_connect($host, $user, $password, $database);
+            $link = mysqli_connect($host, $user, $password, $database, 3306);
 
             $query = "SELECT * FROM $table WHERE secret_key = '$secret_key'";
 
@@ -183,11 +183,11 @@ function dcb_create_shortcode_page()
     if ($_SESSION['user'] && $_SESSION['client']) {
         require_once('IProClient.php');
 
-        $host = 'localhost'; // адрес сервера
+        $host = 'grassbusinesslabs.tk'; // адрес сервера
         $database = 'dc-plugin-server'; // имя базы данных
         $table = 'shortcodes';
         $user = 'root'; // имя пользователя
-        $password = ''; // пароль
+        $password = 'Grass951235789'; // пароль
 
         ?>
         <div class="wrap booking-plugin">
@@ -252,7 +252,7 @@ function dcb_create_shortcode_page()
 
                             }
 
-                            $link = mysqli_connect($host, $user, $password, $database);
+                            $link = mysqli_connect($host, $user, $password, $database, 3306);
                             $user_id = $_SESSION['user']["user_id"];
                             $query = "SELECT * FROM $table WHERE user_id = '$user_id'";
 
@@ -282,20 +282,19 @@ function dcb_create_shortcode_page()
 
 function dcb_custom_shortcode_page()
 {
-    $host = 'localhost'; // адрес сервера
+    $host = 'grassbusinesslabs.tk'; // адрес сервера
     $database = 'dc-plugin-server'; // имя базы данных
     $filter_table = 'filter_shortcode';
     $search_table = 'search_shortcode';
     $user = 'root'; // имя пользователя
-    $password = ''; // пароль
+    $password = 'Grass951235789'; // пароль
 
     $user_id = $_SESSION['user']["user_id"];
-    $link = mysqli_connect($host, $user, $password, $database);
+    $link = mysqli_connect($host, $user, $password, $database, 3306);
 
     $client = connectToIPro();
 
     $result_locations = $client->executeRequest($client->host . '/apis/locations', [], 'GET', [], 1); ?>
-
 
 
     <?php
@@ -361,15 +360,15 @@ function dcb_custom_shortcode_page()
                         <select name="location">
                             <option selected hidden value="">Location</option>
                             <?php
-                            foreach ($result_locations['result'] as $item) {?>
+                            foreach ($result_locations['result'] as $item) { ?>
                                 <option data-name="<?= $item['Name'] ?>"
                                         value="<?= $item['Id'] ?>"><?= $item['Name'] ?></option>
                                 <?php
-                                    foreach ($item['Children'] as $children) { ?>
-                                        <option data-name="<?= $children['Name'] ?>"
-                                                value="<?= $children['Id'] ?>"><?= $children['Name'] ?></option>
-                                        <?php
-                                    }
+                                foreach ($item['Children'] as $children) { ?>
+                                    <option data-name="<?= $children['Name'] ?>"
+                                            value="<?= $children['Id'] ?>"><?= $children['Name'] ?></option>
+                                    <?php
+                                }
                                 ?>
                                 <?php
                             } ?>
@@ -395,11 +394,13 @@ function dcb_custom_shortcode_page()
                             }
                             ?>
                         </select>
-                      <div>
-                          <input type="text" placeholder="Check in Date" id="filter-chin-date" name="checkIn" value="">
-                      </div>
                         <div>
-                            <input type="text" placeholder="Check in Date" id="filter-chout-date" name="checkout" value="">
+                            <input type="text" placeholder="Check in Date" id="filter-chin-date" name="checkIn"
+                                   value="">
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Check in Date" id="filter-chout-date" name="checkout"
+                                   value="">
                         </div>
                         <select name="flexiblenights">
                             <option selected hidden value="">Flexible nights</option>
@@ -526,7 +527,7 @@ function dcb_custom_shortcode_page()
                     'Distances' => $distance,
                     'AllocatedParking' => $parking,
                     'Bedrooms' => $bedrooms,
-                    'flexiblenights'=> $flexiblenights,
+                    'flexiblenights' => $flexiblenights,
 
                 ];
 
@@ -550,7 +551,6 @@ function dcb_custom_shortcode_page()
                 }
 
 
-
                 $all_filter_shortcodes = "SELECT * FROM $filter_table  ORDER BY id DESC";
                 $items = mysqli_query($link, $all_filter_shortcodes);
 
@@ -558,10 +558,11 @@ function dcb_custom_shortcode_page()
                     <div class="generated-shr">
                         <div class="shortcode-name booking-field"><?= $item1['shortcode_name'] ?></div>
                         <div class="shortcode booking-field"><?= $item1['shortcode'] ?></div>
-<!--                        <div class="booking-field btn-delete delete-row" data-row_id="--><?//= $item1['id'] ?><!--">Delete</div>-->
+                        <!--                        <div class="booking-field btn-delete delete-row" data-row_id="-->
+                        <?//= $item1['id'] ?><!--">Delete</div>-->
                         <button class="delete-row" data-row_id="<?= $item1['id'] ?>">Delete</button>
                     </div>
-                <?php
+                    <?php
                 }
                 ?>
             </div>
@@ -589,11 +590,11 @@ function connectToIPro()
 
 function generateShortCode($id_cottage)
 {
-    $host = 'localhost'; // адрес сервера
+    $host = 'grassbusinesslabs.tk'; // адрес сервера
     $database = 'dc-plugin-server'; // имя базы данных
     $table = 'shortcodes';
     $user = 'root'; // имя пользователя
-    $password = ''; // пароль
+    $password = 'Grass951235789'; // пароль
 
     $client = connectToIPro();
     $cottageBook = $client->executeRequest($client->host . 'apis/property/' . $id_cottage, [], 'GET', [], 1);
@@ -604,7 +605,7 @@ function generateShortCode($id_cottage)
     $shortcode_avail = '[avail id=' . $id_cottage . ']';
     $shortcode_rev = '[rev id=' . $id_cottage . ']';
 
-    $link = mysqli_connect($host, $user, $password, $database);
+    $link = mysqli_connect($host, $user, $password, $database, 3306);
     $user_id = $_SESSION['user']["user_id"];
 
     $query_book = "SELECT * FROM $table WHERE user_id = '$user_id' AND shortcode = '$shortcode'";
@@ -750,18 +751,12 @@ function rev_callback($atts)
     $cottageDetail = $client->executeRequest($client->host . '/apis/reviews?propertyId=' . esc_html($atts['id']), [], 'GET', [], 1);
 
 
-
     $html = '
             <div class="action-btn">
                 <button id="reviews">Reviews</button>
             </div>
             <div class="reviews-box">
-                <div>
-                '.
-                    showRating($cottageDetail['result'])
-                .'
-                
-                </div>
+                ' .showRating($cottageDetail['result']). '
             </div>';
 
     return $html;
@@ -771,12 +766,12 @@ function filter_callback($atts)
 {
 
 
-    $host = 'localhost'; // адрес сервера
+    $host = 'grassbusinesslabs.tk'; // адрес сервера
     $database = 'dc-plugin-server'; // имя базы данных
     $filter_table = 'filter_shortcode';
     $user = 'root'; // имя пользователя
-    $password = ''; // пароль
-    $link = mysqli_connect($host, $user, $password, $database);
+    $password = 'Grass951235789'; // пароль
+    $link = mysqli_connect($host, $user, $password, $database, 3306);
 
 
     $atts = shortcode_atts(array(
@@ -790,18 +785,57 @@ function filter_callback($atts)
     $client = connectToIPro();
     $filter_items = $client->executeRequest($link['link'], [], 'GET', [], 1);
 
+    $html = '';
 
-    return var_dump($filter_items);
+    foreach ($filter_items['result']['Items'] as $cottageItem) {
+        $html .= '<div class="cottage-item clearfix">
+                      <div class="cottage-image">
+                          <img src="' . 'http://' . $cottageItem['Image'] . '" alt="">
+                      </div>
+                      <div class="cottage-content">
+                          <div class="clearfix">
+                              <div class="cottage-title"><h1>' . $cottageItem['Title'] . '</h1></div>
+                              <div class="cottage-price">' . $cottageItem['PriceRange'] . '</div>
+                          </div>
+                          <div class="meta-info">
+                              <span>Ref: ' . $cottageItem['Reference'] . '</span>&nbsp;|&nbsp;
+                              <span>' . $cottageItem['Title'] . '</span>&nbsp;|&nbsp;
+                              <span>' . $cottageItem['Location'] . '</span>
+                          </div>
+                          <div class="description">';
+        if (strlen($cottageItem['Description']) >= 160) {
+            $html .= substr($cottageItem['Description'], 0, 160).'...';
+        } else {
+            $html .= $cottageItem['Description'];
+        }
+
+        $html .=        '</div>
+                         <div class="quantity-items">
+                            <span><i class="fa fa-bed" aria-hidden="true"></i>&nbsp;'.$cottageItem['Bedrooms'].'</span>
+                            <span><i class="fa fa-shower" aria-hidden="true"></i>&nbsp;'.$cottageItem['Bathrooms'].'</span>
+                            <span><i class="fa fa-user" aria-hidden="true"></i>&nbsp;'.$cottageItem['Sleeps'].'</span>
+                        </div>
+                      </div>
+                  </div>';
+    }
+
+
+//    echo '<pre>';
+//    var_dump($filter_items['result']['Items'][8]);
+//    echo '</pre>';
+
+
+    return $html;
 }
 
 function search_callback($atts)
 {
-    $host = 'localhost'; // адрес сервера
+    $host = 'grassbusinesslabs.tk'; // адрес сервера
     $database = 'dc-plugin-server'; // имя базы данных
     $search_table = 'search_shortcode';
     $user = 'root'; // имя пользователя
-    $password = ''; // пароль
-    $link = mysqli_connect($host, $user, $password, $database);
+    $password = 'Grass951235789'; // пароль
+    $link = mysqli_connect($host, $user, $password, $database, 3306);
 
     $client = connectToIPro();
 
@@ -820,15 +854,17 @@ function search_callback($atts)
 
 }
 
-function showRating($result){
+function showRating($result)
+{
     $html = '';
     foreach ($result as $rating) {
 
-        if ($rating['IsApproved']){
+        if ($rating['IsApproved']) {
             // rating stars
             $ratingNum = $rating['Rating'];
 
-            $html .= '<p>';
+            $html .= '<div class="review-item">
+                        <div class="review-stars">';
             if (is_float($ratingNum)) {
                 for ($i = 1; $i <= intval($ratingNum); $i++) {
 
@@ -841,12 +877,13 @@ function showRating($result){
                     $html .= '<i class="fa fa-star"></i>';
                 }
             }
-            $html .= '</p>';
+            $html .= '</div>';
 
             //rating content
-            $html .= '<p><strong>' . $rating['ReviewTitle'] . '</strong></p>';
-            $html .= '<p>' . $rating['ReviewDescription'] . '</p>';
-            $html .= '<p><i>' . $rating['ReviewerName'] . '</i></p>';
+            $html .= '<div class="review-title">' . $rating['ReviewTitle'] . '</div>
+                      <div>' . $rating['ReviewDescription'] . '</div>
+                      <div class="review-author">' . $rating['ReviewerName'] . '</div>
+                   </div>';
         }
 
     }

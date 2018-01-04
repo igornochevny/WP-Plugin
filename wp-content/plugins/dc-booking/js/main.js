@@ -39,12 +39,11 @@
                 $('.book-form').fadeOut(300);
             });
 
-
         ///////////////////////
         $('#availab-calendar').datepicker({
             beforeShowDay: disableDays,
             minDate: 0,
-            numberOfMonths: [3, 2]
+            numberOfMonths: [3, 3]
         });
         $('#availab').toggle(function () {
                 $('.availab-calendar-box').fadeIn(500);
@@ -52,6 +51,7 @@
             function () {
                 $('.availab-calendar-box').fadeOut(400);
             });
+
         //////////////////
         $('#filter-chin-date').datepicker({
             minDate: 0,
@@ -61,6 +61,14 @@
             minDate: 0,
             numberOfMonths: [3, 2]
         });
+
+        ////////////////
+        $('#reviews').toggle(function () {
+                $('.reviews-box').fadeIn(500);
+            },
+            function () {
+                $('.reviews-box').fadeOut(300);
+            });
 
 
 
